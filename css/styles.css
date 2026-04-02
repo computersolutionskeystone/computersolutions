@@ -1779,14 +1779,21 @@ p {
 /* ============================================
    ROBO CHAIYZ PROMPT + TROUBLESHOOTER
    ============================================ */
+.svc-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+  gap: 1.5rem;
+}
+
 .robo-prompt {
   display: flex;
   align-items: flex-start;
-  gap: 0.75rem;
-  max-width: 420px;
-  margin: 0 auto;
-  padding: 1.5rem 0 2.5rem;
-  animation: roboSlideIn 0.6s ease;
+  gap: 0.65rem;
+  animation: roboSlideIn 0.8s ease both;
+  animation-delay: 1s;
+  opacity: 0;
 }
 
 @keyframes roboSlideIn {
@@ -1795,8 +1802,8 @@ p {
 }
 
 .robo-avatar {
-  width: 52px;
-  height: 52px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   object-fit: cover;
   flex-shrink: 0;
@@ -1831,8 +1838,12 @@ p {
   line-height: 1.4;
 }
 
+@media (max-width: 768px) {
+  .svc-bottom { flex-direction: column; align-items: center; }
+}
+
 @media (max-width: 480px) {
-  .robo-prompt { max-width: 100%; padding: 1rem 1rem 2rem; }
+  .robo-prompt { width: 100%; }
 }
 
 .ts-chat {
