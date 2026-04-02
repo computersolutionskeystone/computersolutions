@@ -16,8 +16,8 @@
    and return the JSON response.
    ============================================ */
 
-// Uses Cloudflare Pages Function at /api/reviews
-// Set GOOGLE_PLACES_API_KEY and GOOGLE_PLACE_ID as env vars in Cloudflare Pages dashboard
+// Set to true once GOOGLE_PLACES_API_KEY and GOOGLE_PLACE_ID are configured in Cloudflare
+var USE_LIVE_REVIEWS = (typeof SITE_CONFIG !== 'undefined' && SITE_CONFIG.USE_LIVE_REVIEWS) || false;
 var REVIEWS_API_URL = '/api/reviews';
 
 // Fallback reviews (used when API unavailable)
@@ -76,6 +76,10 @@ var MAX_REVIEWS = 5;
 
 // --- Fetch Reviews ---
 async function fetchGoogleReviews() {
+  if (!USE_LIVE_REVIEWS) {
+    return FALLBACK_REVIEWS.slice(0, MAX_REVIEWS);
+  }
+
   try {
     var controller = new AbortController();
     var timeout = setTimeout(function () { controller.abort(); }, 3000);
@@ -89,7 +93,6 @@ async function fetchGoogleReviews() {
     var reviews = (data.reviews || []).slice(0, MAX_REVIEWS);
     return reviews.length > 0 ? reviews : FALLBACK_REVIEWS.slice(0, MAX_REVIEWS);
   } catch (err) {
-    console.log('Reviews: using fallback');
     return FALLBACK_REVIEWS.slice(0, MAX_REVIEWS);
   }
 }
