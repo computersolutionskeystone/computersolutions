@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Book a computer repair appointment online with Computer Solutions. Easy scheduling, free diagnostic included.">
+  <title>Book an Appointment | Computer Solutions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header" id="header">
+    <nav class="nav container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">CS</div>
+        Computer <span>Solutions</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="testimonials.html">Testimonials</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li class="nav-cta"><a href="booking.html" class="btn btn-primary active">Book Now</a></li>
+      </ul>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h1>Book an Appointment</h1>
+      <p>Schedule your repair or consultation online. Free diagnostic included.</p>
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <span>Book Online</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Booking Form -->
+  <section class="section">
+    <div class="container">
+      <div class="booking-grid">
+        <!-- Booking Info -->
+        <div>
+          <h2 style="margin-bottom: 1rem;">Schedule Your Visit</h2>
+          <p style="margin-bottom: 2rem;">Choose a date and time that works for you. We'll confirm your appointment via email within 1 hour.</p>
+
+          <div class="why-card fade-in" style="margin-bottom: 1rem;">
+            <div class="why-icon">&#9989;</div>
+            <div>
+              <h4>Free Diagnostic</h4>
+              <p>Every appointment includes a complimentary diagnostic assessment.</p>
+            </div>
+          </div>
+          <div class="why-card fade-in" style="margin-bottom: 1rem;">
+            <div class="why-icon">&#9889;</div>
+            <div>
+              <h4>Same-Day Available</h4>
+              <p>Emergency same-day appointments available for critical issues.</p>
+            </div>
+          </div>
+          <div class="why-card fade-in" style="margin-bottom: 1rem;">
+            <div class="why-icon">&#128338;</div>
+            <div>
+              <h4>Flexible Scheduling</h4>
+              <p>Appointments available Monday-Friday 8AM-6PM, Saturday 9AM-3PM.</p>
+            </div>
+          </div>
+          <div class="why-card fade-in">
+            <div class="why-icon">&#128176;</div>
+            <div>
+              <h4>No Obligation</h4>
+              <p>Get your quote first. No pressure, no hidden charges.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Form -->
+        <div class="form-container fade-in">
+          <h3 style="margin-bottom: 1.5rem;">Appointment Details</h3>
+          <form id="bookingForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="bookName">Full Name *</label>
+                <input type="text" id="bookName" name="name" required placeholder="John Doe">
+              </div>
+              <div class="form-group">
+                <label for="bookPhone">Phone Number *</label>
+                <input type="tel" id="bookPhone" name="phone" required placeholder="(555) 000-0000">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="bookEmail">Email Address *</label>
+              <input type="email" id="bookEmail" name="email" required placeholder="john@example.com">
+            </div>
+            <div class="form-group">
+              <label for="bookService">Service Needed *</label>
+              <select id="bookService" name="service" required>
+                <option value="">Select a service...</option>
+                <option value="hardware">Hardware Repair</option>
+                <option value="software">Software Support</option>
+                <option value="data">Data Recovery</option>
+                <option value="network">Network Setup</option>
+                <option value="security">Cybersecurity</option>
+                <option value="business">Business IT</option>
+                <option value="upgrade">Upgrade / Custom Build</option>
+                <option value="other">Other / Not Sure</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="bookDevice">Device Type *</label>
+              <select id="bookDevice" name="device" required>
+                <option value="">Select device type...</option>
+                <option value="laptop">Laptop</option>
+                <option value="desktop">Desktop PC</option>
+                <option value="mac">Mac / MacBook</option>
+                <option value="tablet">Tablet</option>
+                <option value="server">Server</option>
+                <option value="network">Network Equipment</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="bookDate">Preferred Date *</label>
+                <input type="date" id="bookDate" name="date" required>
+              </div>
+              <div class="form-group">
+                <label for="bookTime">Preferred Time *</label>
+                <select id="bookTime" name="time" required>
+                  <option value="">Select a time...</option>
+                  <option value="08:00">8:00 AM</option>
+                  <option value="09:00">9:00 AM</option>
+                  <option value="10:00">10:00 AM</option>
+                  <option value="11:00">11:00 AM</option>
+                  <option value="12:00">12:00 PM</option>
+                  <option value="13:00">1:00 PM</option>
+                  <option value="14:00">2:00 PM</option>
+                  <option value="15:00">3:00 PM</option>
+                  <option value="16:00">4:00 PM</option>
+                  <option value="17:00">5:00 PM</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="bookDescription">Describe the Issue</label>
+              <textarea id="bookDescription" name="description" placeholder="Tell us about the problem you're experiencing..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">Book Appointment</button>
+          </form>
+          <div class="form-success" id="bookingSuccess">
+            <div class="form-success-icon">&#10003;</div>
+            <h3>Appointment Booked!</h3>
+            <p>We've received your booking request. You'll receive a confirmation email within 1 hour with all the details.</p>
+            <a href="index.html" class="btn btn-primary" style="margin-top: 1rem;">Back to Home</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <a href="index.html" class="logo">
+            <div class="logo-icon">CS</div>
+            Computer <span>Solutions</span>
+          </a>
+          <p>Professional computer repair and IT services. Serving our community with reliable, affordable technology solutions since 2009.</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="testimonials.html">Testimonials</a></li>
+            <li><a href="booking.html">Book Online</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Services</h4>
+          <ul class="footer-links">
+            <li><a href="services.html">Hardware Repair</a></li>
+            <li><a href="services.html">Software Support</a></li>
+            <li><a href="services.html">Network Setup</a></li>
+            <li><a href="services.html">Data Recovery</a></li>
+            <li><a href="services.html">Business IT</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul class="footer-contact">
+            <li>&#128205; 123 Tech Street, Suite 100</li>
+            <li>&#128222; (555) 123-4567</li>
+            <li>&#9993; info@computersolutions.com</li>
+            <li>&#128338; Mon-Fri: 8AM - 6PM</li>
+            <li>&#128338; Sat: 9AM - 3PM</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Computer Solutions. All rights reserved.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook">FB</a>
+          <a href="#" aria-label="Twitter">X</a>
+          <a href="#" aria-label="LinkedIn">in</a>
+          <a href="#" aria-label="Instagram">IG</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
