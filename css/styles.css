@@ -5,12 +5,12 @@
 
 /* --- CSS Variables --- */
 :root {
-  --primary: #1a56db;
-  --primary-light: #3b82f6;
-  --primary-dark: #1e40af;
-  --accent: #06b6d4;
-  --dark: #0f172a;
-  --dark-light: #1e293b;
+  --primary: #1b2a4a;
+  --primary-light: #2a4068;
+  --primary-dark: #111d35;
+  --accent: #4a90d9;
+  --dark: #0d1520;
+  --dark-light: #152238;
   --gray-900: #111827;
   --gray-800: #1f2937;
   --gray-700: #374151;
@@ -259,13 +259,14 @@ p {
 .logo-icon {
   width: 40px;
   height: 40px;
-  background: var(--primary);
   border-radius: var(--radius);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--white);
-  font-size: 1.2rem;
+  overflow: hidden;
+}
+
+.logo-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .logo span {
@@ -388,30 +389,17 @@ p {
 
 .hero-graphic {
   width: 100%;
-  max-width: 480px;
-  aspect-ratio: 1;
-  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  max-width: 500px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
   position: relative;
-  opacity: 0.9;
+  box-shadow: var(--shadow-xl);
 }
 
-.hero-graphic::before {
-  content: '';
-  position: absolute;
-  inset: -20px;
-  border: 2px dashed rgba(255, 255, 255, 0.15);
-  border-radius: 50%;
-  animation: spin 30s linear infinite;
-}
-
-.hero-graphic-inner {
-  font-size: 8rem;
-  color: var(--white);
-  filter: drop-shadow(0 4px 20px rgba(0,0,0,0.3));
+.hero-graphic img {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 @keyframes spin {
@@ -497,11 +485,13 @@ p {
 
 .service-card-image {
   height: 200px;
-  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 4rem;
+  overflow: hidden;
+}
+
+.service-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .service-card-body {
@@ -814,15 +804,16 @@ p {
 }
 
 .about-image {
-  background: linear-gradient(135deg, var(--primary), var(--accent));
   border-radius: var(--radius-lg);
   aspect-ratio: 4/3;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 6rem;
-  position: relative;
   overflow: hidden;
+  position: relative;
+}
+
+.about-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .about-text h2 {
