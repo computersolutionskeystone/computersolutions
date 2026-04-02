@@ -9,7 +9,7 @@
 
 // Set this to your Cloudflare Worker URL after deploying Chatworker
 // e.g. 'https://cs-chat-proxy.your-subdomain.workers.dev'
-const CHAT_WORKER_URL = '';
+const CHAT_WORKER_URL = 'https://cs-chat-proxy.tgqhg6kf4g.workers.dev';
 
 let chatHistory = [];
 let useFallback = false;
