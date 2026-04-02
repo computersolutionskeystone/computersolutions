@@ -72,18 +72,25 @@ const FALLBACK_REVIEWS = [
   }
 ];
 
+var MAX_REVIEWS = 5;
+
 // --- Fetch Reviews ---
 async function fetchGoogleReviews() {
   try {
-    var res = await fetch(REVIEWS_API_URL);
-    if (!res.ok) throw new Error('Reviews API returned ' + res.status);
+    var controller = new AbortController();
+    var timeout = setTimeout(function () { controller.abort(); }, 3000);
+
+    var res = await fetch(REVIEWS_API_URL, { signal: controller.signal });
+    clearTimeout(timeout);
+
+    if (!res.ok) throw new Error('API returned ' + res.status);
     var data = await res.json();
 
-    var reviews = data.reviews || [];
-    return reviews.length > 0 ? reviews : FALLBACK_REVIEWS;
+    var reviews = (data.reviews || []).slice(0, MAX_REVIEWS);
+    return reviews.length > 0 ? reviews : FALLBACK_REVIEWS.slice(0, MAX_REVIEWS);
   } catch (err) {
-    console.warn('Reviews: API failed, using fallback:', err.message);
-    return FALLBACK_REVIEWS;
+    console.log('Reviews: using fallback');
+    return FALLBACK_REVIEWS.slice(0, MAX_REVIEWS);
   }
 }
 
