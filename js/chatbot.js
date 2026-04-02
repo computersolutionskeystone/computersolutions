@@ -7,8 +7,9 @@
    your key in client-side code.
    ============================================ */
 
-// Reads from js/config.js — edit SITE_CONFIG there
-var CHAT_WORKER_URL = (typeof SITE_CONFIG !== 'undefined' && SITE_CONFIG.CHAT_WORKER_URL) || '';
+// Uses Cloudflare Pages Function at /api/chat
+// API key is set as environment variable ANTHROPIC_API_KEY in Cloudflare Pages dashboard
+var CHAT_API_URL = '/api/chat';
 
 let chatHistory = [];
 let useFallback = false;
@@ -59,7 +60,7 @@ async function sendToWorker(userMessage) {
   chatHistory.push({ role: 'user', content: userMessage });
 
   try {
-    var res = await fetch(CHAT_WORKER_URL, {
+    var res = await fetch(CHAT_API_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ messages: chatHistory.slice(-10) })
@@ -169,8 +170,8 @@ document.addEventListener('DOMContentLoaded', function () {
     showTyping();
 
     var reply;
-    if (useFallback || !CHAT_WORKER_URL) {
-      // Use fallback if no worker URL or previous failure
+    if (useFallback) {
+      // Use fallback if previous API failure
       await new Promise(function (r) { setTimeout(r, 600); });
       reply = getFallbackResponse(text);
       chatHistory.push({ role: 'user', content: text });
