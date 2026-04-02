@@ -35,15 +35,46 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // --- Services accordion click (mobile) ---
-  var accordion = document.getElementById('svcAccordion');
-  if (accordion) {
-    accordion.querySelectorAll('.svc-tile').forEach(function (tile) {
-      tile.addEventListener('click', function () {
-        accordion.querySelectorAll('.svc-tile').forEach(function (t) {
-          t.classList.remove('active');
-        });
-        tile.classList.add('active');
+  // --- Services showcase ---
+  var svcData = [
+    { title: 'PC & Laptop Repair', desc: 'Complete hardware and software repair for desktops and laptops. Screen replacements, motherboard repair, component upgrades, and more. All major brands and models serviced.' },
+    { title: 'TV Repair', desc: 'LED, LCD, and DLP television repair. We diagnose and fix display issues, power problems, backlight failures, and sound problems. Bring it in for a free diagnostic.' },
+    { title: 'Virus & Malware Removal', desc: 'Thorough virus and malware removal with a 90-day warranty. We clean your system, set up protection, and if it comes back within 90 days we fix it free.' },
+    { title: 'Data Recovery', desc: 'Lost important files? We recover data from damaged, corrupted, or failing hard drives and SSDs. Don\'t panic — bring it in and we\'ll see what we can save.' },
+    { title: 'Computer Sales', desc: 'New and refurbished laptops and desktops at competitive prices. We help you find the right computer for your needs and budget, with setup included.' },
+    { title: 'Business IT Support', desc: 'Full software and hardware support for business computers. Consulting, setup, network troubleshooting, and ongoing maintenance plans available.' }
+  ];
+
+  var svcIcons = document.getElementById('svcIcons');
+  var svcDetailInner = document.getElementById('svcDetailInner');
+
+  function showService(index) {
+    var s = svcData[index];
+    svcDetailInner.innerHTML = '<h3>' + s.title + '</h3><p>' + s.desc + '</p><a href="services.html">Learn more &rarr;</a>';
+    svcDetailInner.style.animation = 'none';
+    svcDetailInner.offsetHeight; // trigger reflow
+    svcDetailInner.style.animation = 'svcFadeIn 0.35s ease';
+  }
+
+  if (svcIcons && svcDetailInner) {
+    showService(0);
+    var autoRotate = setInterval(function () {
+      var current = svcIcons.querySelector('.svc-icon-btn.active');
+      var next = current.nextElementSibling;
+      if (!next || !next.classList.contains('svc-icon-btn')) {
+        next = svcIcons.querySelector('.svc-icon-btn');
+      }
+      svcIcons.querySelectorAll('.svc-icon-btn').forEach(function (b) { b.classList.remove('active'); });
+      next.classList.add('active');
+      showService(parseInt(next.getAttribute('data-index')));
+    }, 5000);
+
+    svcIcons.querySelectorAll('.svc-icon-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        clearInterval(autoRotate);
+        svcIcons.querySelectorAll('.svc-icon-btn').forEach(function (b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        showService(parseInt(btn.getAttribute('data-index')));
       });
     });
   }
