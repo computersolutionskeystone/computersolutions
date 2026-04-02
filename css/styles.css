@@ -1853,6 +1853,17 @@ p {
   border: 1px solid var(--gray-200);
   align-self: flex-start;
   border-bottom-left-radius: 4px;
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-start;
+}
+
+.ts-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
 }
 
 .ts-msg.user {

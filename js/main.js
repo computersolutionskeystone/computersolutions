@@ -335,8 +335,11 @@ document.addEventListener('DOMContentLoaded', function () {
     div.className = 'ts-msg ' + sender;
     var html = text.replace(/\n/g, '<br>');
     // Add "Schedule a visit" link to bot messages that mention scheduling/booking/visit/come in
-    if (sender === 'bot' && /schedul|book|visit|come in|bring it|hands-on|in.person|free diagnostic/i.test(text)) {
-      html += '<br><a class="ts-book-link" data-open-contact href="#">Schedule a visit &rarr;</a>';
+    if (sender === 'bot') {
+      html = '<img src="images/bio.jpg" alt="Robo Chaiyz" class="ts-avatar">' + html;
+      if (/schedul|book|visit|come in|bring it|hands-on|in.person|free diagnostic/i.test(text)) {
+        html += '<br><a class="ts-book-link" data-open-contact href="#">Schedule a visit &rarr;</a>';
+      }
     }
     div.innerHTML = html;
     tsMessages.appendChild(div);
