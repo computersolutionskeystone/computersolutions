@@ -323,6 +323,32 @@ document.addEventListener('DOMContentLoaded', function () {
     submitWeb3Form(homeCallbackForm, homeCallbackSuccess);
   }
 
+  // --- Robo Chaiyz modal open ---
+  var roboOpenBtn = document.getElementById('roboOpenBtn');
+  var tsModal = document.getElementById('tsModal');
+  var tsModalClose = document.getElementById('tsModalClose');
+
+  if (roboOpenBtn && tsModal) {
+    roboOpenBtn.addEventListener('click', function () {
+      tsModal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      var inp = document.getElementById('tsInput');
+      if (inp) inp.focus();
+    });
+
+    tsModalClose.addEventListener('click', function () {
+      tsModal.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+
+    tsModal.addEventListener('click', function (e) {
+      if (e.target === tsModal) {
+        tsModal.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+    });
+  }
+
   // --- Troubleshooter ---
   var tsForm = document.getElementById('tsForm');
   var tsInput = document.getElementById('tsInput');

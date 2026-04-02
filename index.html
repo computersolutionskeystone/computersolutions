@@ -139,46 +139,49 @@
     </div>
   </section>
 
-  <!-- Troubleshooter -->
-  <section class="hp-troubleshoot">
-    <div class="container">
-      <div class="ts-layout fade-in">
-        <div class="ts-info">
-          <h2>Meet Robo Chaiyz</h2>
-          <p>Our AI-powered virtual technician will walk you through troubleshooting steps. If he can't fix it remotely, he'll help you schedule a visit with the real Chaiyz.</p>
-          <div class="ts-tags">
-            <span>Slow Computer</span>
-            <span>No Power</span>
-            <span>Blue Screen</span>
-            <span>Virus</span>
-            <span>Wi-Fi Issues</span>
-            <span>TV Problems</span>
-          </div>
+  <!-- Robo Chaiyz Prompt -->
+  <div class="robo-prompt fade-in" id="roboPrompt">
+    <img src="images/bio.jpg" alt="Robo Chaiyz" class="robo-avatar">
+    <div class="robo-bubble">
+      <strong>Robo Chaiyz</strong>
+      <p>Having tech trouble? I can help you troubleshoot right now!</p>
+      <button class="btn btn-accent" id="roboOpenBtn" style="font-size:0.82rem;padding:0.45rem 1.1rem;">Let's troubleshoot</button>
+    </div>
+  </div>
+
+  <!-- Troubleshooter Modal -->
+  <div class="contact-modal" id="tsModal">
+    <div class="contact-modal-inner" style="max-width:600px;">
+      <div class="contact-modal-header">
+        <div style="display:flex;align-items:center;gap:0.6rem;">
+          <img src="images/bio.jpg" alt="Robo Chaiyz" style="width:32px;height:32px;border-radius:50%;object-fit:cover;">
+          <h3>Robo Chaiyz</h3>
         </div>
-        <div class="ts-chat" id="tsChat">
-          <div class="ts-messages" id="tsMessages">
-            <div class="ts-msg bot"><img src="images/bio.jpg" alt="Robo Chaiyz" class="ts-avatar">Hi! I'm Robo Chaiyz, your virtual tech assistant. What's going on with your device?</div>
-          </div>
-          <div class="ts-quick" id="tsQuick">
-            <button data-msg="My computer is running really slow">Slow PC</button>
-            <button data-msg="My computer won't turn on">Won't Power On</button>
-            <button data-msg="I think I have a virus">Virus/Malware</button>
-            <button data-msg="My Wi-Fi keeps disconnecting">Wi-Fi Issues</button>
-            <button data-msg="My TV screen is flickering">TV Problem</button>
-          </div>
-          <div class="ts-send-chat" id="tsSendChat" style="display:none;">
-            <button class="btn btn-accent" id="tsSendChatBtn" style="width:100%;font-size:0.85rem;padding:0.5rem;">Send this chat to our team for diagnosis</button>
-          </div>
-          <form class="ts-input" id="tsForm">
-            <input type="text" id="tsInput" placeholder="Describe your issue..." autocomplete="off">
-            <button type="submit">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
-            </button>
-          </form>
+        <button class="contact-modal-close" id="tsModalClose" aria-label="Close">&times;</button>
+      </div>
+      <div class="ts-chat" id="tsChat" style="max-height:none;border:none;border-radius:0;">
+        <div class="ts-messages" id="tsMessages" style="min-height:250px;max-height:50vh;">
+          <div class="ts-msg bot"><img src="images/bio.jpg" alt="Robo Chaiyz" class="ts-avatar">Hey! I'm Robo Chaiyz. Tell me what's going on with your device and I'll try to help you fix it.</div>
         </div>
+        <div class="ts-quick" id="tsQuick">
+          <button data-msg="My computer is running really slow">Slow PC</button>
+          <button data-msg="My computer won't turn on">Won't Power On</button>
+          <button data-msg="I think I have a virus">Virus/Malware</button>
+          <button data-msg="My Wi-Fi keeps disconnecting">Wi-Fi Issues</button>
+          <button data-msg="My TV screen is flickering">TV Problem</button>
+        </div>
+        <div class="ts-send-chat" id="tsSendChat" style="display:none;">
+          <button class="btn btn-accent" id="tsSendChatBtn" style="width:100%;font-size:0.85rem;padding:0.5rem;">Send this chat to our team for diagnosis</button>
+        </div>
+        <form class="ts-input" id="tsForm">
+          <input type="text" id="tsInput" placeholder="Describe your issue..." autocomplete="off">
+          <button type="submit">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+          </button>
+        </form>
       </div>
     </div>
-  </section>
+  </div>
 
   <!-- Reviews -->
   <section class="hp-reviews reviews-section">
