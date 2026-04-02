@@ -69,13 +69,13 @@ document.addEventListener('DOMContentLoaded', function () {
       showService(parseInt(next.getAttribute('data-index')));
     }, 5000);
 
-    svcIcons.querySelectorAll('.svc-icon-btn').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        clearInterval(autoRotate);
-        svcIcons.querySelectorAll('.svc-icon-btn').forEach(function (b) { b.classList.remove('active'); });
-        btn.classList.add('active');
-        showService(parseInt(btn.getAttribute('data-index')));
-      });
+    svcIcons.addEventListener('click', function (e) {
+      var btn = e.target.closest('.svc-icon-btn');
+      if (!btn) return;
+      clearInterval(autoRotate);
+      svcIcons.querySelectorAll('.svc-icon-btn').forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      showService(parseInt(btn.getAttribute('data-index')));
     });
   }
 

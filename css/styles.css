@@ -568,6 +568,7 @@ p {
   height: 28px;
   color: var(--gray-500);
   transition: var(--transition);
+  pointer-events: none;
 }
 
 .svc-icon-btn span {
@@ -575,6 +576,7 @@ p {
   font-weight: 600;
   color: var(--gray-500);
   transition: var(--transition);
+  pointer-events: none;
 }
 
 .svc-icon-btn:hover {
