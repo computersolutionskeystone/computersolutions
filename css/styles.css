@@ -1779,50 +1779,49 @@ p {
 /* ============================================
    BUILD YOUR PC WORKFLOW
    ============================================ */
-.build-workflow {
+.build-paths {
   display: grid;
-  grid-template-columns: 1fr 1.4fr;
-  gap: 2.5rem;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
   align-items: start;
 }
 
-.build-step-1 {
+.build-path {
   padding: 2rem;
-  background: var(--dark);
+  border: 1px solid var(--gray-200);
   border-radius: var(--radius-xl);
-  color: var(--white);
-  text-align: center;
 }
 
-.build-step-1 h3 {
-  color: var(--white);
+.build-path-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
   margin-bottom: 0.75rem;
-  font-size: 1.15rem;
 }
 
-.build-step-1 p {
-  color: var(--gray-400);
+.build-path-header h3 {
+  font-size: 1.15rem;
+  margin: 0;
+}
+
+.build-path > p {
   font-size: 0.9rem;
+  color: var(--gray-500);
   margin-bottom: 1.25rem;
-  line-height: 1.6;
+  line-height: 1.5;
 }
 
-.build-step-2 h3 {
-  font-size: 1.15rem;
-  margin-bottom: 1rem;
+.build-path .form-group { margin-bottom: 0.85rem; }
+.build-path .form-group label { font-size: 0.85rem; }
+.build-path .form-group input,
+.build-path .form-group textarea {
+  padding: 0.6rem 0.85rem;
+  font-size: 0.88rem;
 }
-
-.build-step-2 .form-group { margin-bottom: 0.9rem; }
-.build-step-2 .form-group label { font-size: 0.85rem; }
-.build-step-2 .form-group input,
-.build-step-2 .form-group textarea {
-  padding: 0.65rem 0.9rem;
-  font-size: 0.9rem;
-}
-.build-step-2 textarea { min-height: 70px; }
+.build-path textarea { min-height: 60px; }
 
 @media (max-width: 768px) {
-  .build-workflow { grid-template-columns: 1fr; }
+  .build-paths { grid-template-columns: 1fr; }
 }
 
 /* ============================================

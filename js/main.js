@@ -501,6 +501,138 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
+  // --- Build Advisor ---
+  var baOpenBtn = document.getElementById('baOpenBtn');
+  var baModal = document.getElementById('baModal');
+  var baModalClose = document.getElementById('baModalClose');
+  var baForm = document.getElementById('baForm');
+  var baInput = document.getElementById('baInput');
+  var baMessages = document.getElementById('baMessages');
+  var baQuick = document.getElementById('baQuick');
+  var baSendChat = document.getElementById('baSendChat');
+  var baSendChatBtn = document.getElementById('baSendChatBtn');
+  var baSendModal = document.getElementById('baSendModal');
+  var baSendModalClose = document.getElementById('baSendModalClose');
+  var baSendForm = document.getElementById('baSendForm');
+  var baSendSuccess = document.getElementById('baSendSuccess');
+  var baTranscript = document.getElementById('baTranscript');
+  var baHistory = [];
+  var baExchanges = 0;
+
+  function baAddMsg(text, sender) {
+    var div = document.createElement('div');
+    div.className = 'ts-msg ' + sender;
+    var html = text.replace(/\n/g, '<br>');
+    if (sender === 'bot') {
+      html = '<img src="images/bio.jpg" alt="Robo Chaiyz" class="ts-avatar">' + html;
+    }
+    div.innerHTML = html;
+    baMessages.appendChild(div);
+    baMessages.scrollTop = baMessages.scrollHeight;
+  }
+
+  async function baSend(text) {
+    if (!text.trim()) return;
+    baAddMsg(text, 'user');
+    if (baQuick) baQuick.style.display = 'none';
+    baInput.value = '';
+    baInput.disabled = true;
+
+    baHistory.push({ role: 'user', content: text });
+
+    // Typing indicator
+    var typing = document.createElement('div');
+    typing.className = 'ts-typing';
+    typing.id = 'baTyping';
+    typing.innerHTML = '<span></span><span></span><span></span>';
+    baMessages.appendChild(typing);
+    baMessages.scrollTop = baMessages.scrollHeight;
+
+    try {
+      var res = await fetch('/api/build-advisor', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: baHistory.slice(-14) })
+      });
+      if (!res.ok) throw new Error(res.status);
+      var data = await res.json();
+      var reply = data.reply;
+      baHistory.push({ role: 'assistant', content: reply });
+
+      var el = document.getElementById('baTyping');
+      if (el) el.remove();
+      baAddMsg(reply, 'bot');
+
+      baExchanges++;
+      // Show send button after recommendation or 3+ exchanges
+      if ((baExchanges >= 3 || /RECOMMENDATION|Recommended Components|send this build/i.test(reply)) && baSendChat) {
+        baSendChat.style.display = 'block';
+      }
+    } catch (err) {
+      var el2 = document.getElementById('baTyping');
+      if (el2) el2.remove();
+      baAddMsg('Having trouble connecting. Call us at (352) 478-6519 for help!', 'bot');
+    }
+
+    baInput.disabled = false;
+    baInput.focus();
+  }
+
+  // Modal open/close
+  if (baOpenBtn && baModal) {
+    baOpenBtn.addEventListener('click', function () {
+      baModal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      if (baInput) baInput.focus();
+    });
+    baModalClose.addEventListener('click', function () {
+      baModal.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+    baModal.addEventListener('click', function (e) {
+      if (e.target === baModal) { baModal.classList.remove('open'); document.body.style.overflow = ''; }
+    });
+  }
+
+  if (baForm) {
+    baForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      baSend(baInput.value);
+    });
+  }
+
+  if (baQuick) {
+    baQuick.addEventListener('click', function (e) {
+      var btn = e.target.closest('button');
+      if (btn) baSend(btn.getAttribute('data-msg'));
+    });
+  }
+
+  // Send to team
+  if (baSendChatBtn && baSendModal) {
+    baSendChatBtn.addEventListener('click', function () {
+      var msgs = baMessages.querySelectorAll('.ts-msg');
+      var lines = [];
+      msgs.forEach(function (m) {
+        var who = m.classList.contains('user') ? 'Customer' : 'Build Advisor';
+        lines.push(who + ': ' + m.textContent.trim());
+      });
+      baTranscript.value = lines.join('\n\n');
+      baModal.classList.remove('open');
+      baSendModal.classList.add('open');
+    });
+    baSendModalClose.addEventListener('click', function () {
+      baSendModal.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+    baSendModal.addEventListener('click', function (e) {
+      if (e.target === baSendModal) { baSendModal.classList.remove('open'); document.body.style.overflow = ''; }
+    });
+    if (baSendForm && baSendSuccess) {
+      submitWeb3Form(baSendForm, baSendSuccess);
+    }
+  }
+
   // --- Build Form (Web3Forms) ---
   var buildForm = document.getElementById('buildForm');
   var buildFormSuccess = document.getElementById('buildFormSuccess');
