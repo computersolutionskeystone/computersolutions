@@ -149,6 +149,58 @@
     </div>
   </section>
 
+  <!-- Build Your PC -->
+  <section class="section" id="buildYourPC">
+    <div class="container">
+      <h2 class="text-center fade-in" style="margin-bottom: 0.5rem;">Build Your Dream PC</h2>
+      <p class="text-center fade-in" style="color:var(--gray-500);max-width:550px;margin:0 auto 2rem;">Pick your parts on PCPartPicker, then send us the list. We'll source everything, build it, test it, and have it ready for you.</p>
+      <div class="build-workflow fade-in">
+        <div class="build-step-1">
+          <h3>Step 1: Pick Your Parts</h3>
+          <p>Use PCPartPicker's system builder to choose your components. It checks compatibility automatically.</p>
+          <a href="https://pcpartpicker.com/list/" target="_blank" rel="noopener" class="btn btn-primary btn-lg">Open PCPartPicker</a>
+          <p style="font-size:0.8rem;color:var(--gray-400);margin-top:0.75rem;">When you're done, click "Save" and copy the share link.</p>
+        </div>
+        <div class="build-step-2">
+          <h3>Step 2: Send Us Your List</h3>
+          <form id="buildForm">
+            <input type="hidden" name="access_key" value="" class="web3forms-key">
+            <input type="hidden" name="subject" value="Custom Build Request from Computer Solutions Website">
+            <input type="hidden" name="from_name" value="Computer Solutions Website">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="bfName">Name *</label>
+                <input type="text" id="bfName" name="name" required placeholder="Your name">
+              </div>
+              <div class="form-group">
+                <label for="bfPhone">Phone *</label>
+                <input type="tel" id="bfPhone" name="phone" required placeholder="(352) 000-0000">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="bfEmail">Email</label>
+              <input type="email" id="bfEmail" name="email" placeholder="you@email.com">
+            </div>
+            <div class="form-group">
+              <label for="bfUrl">PCPartPicker List URL *</label>
+              <input type="url" id="bfUrl" name="pcpartpicker_url" required placeholder="https://pcpartpicker.com/list/abc123">
+            </div>
+            <div class="form-group">
+              <label for="bfNotes">Notes (budget, preferences, etc.)</label>
+              <textarea id="bfNotes" name="notes" placeholder="Any preferences? Budget range? What will you use it for?"></textarea>
+            </div>
+            <button type="submit" class="btn btn-accent btn-lg" style="width:100%;">Send Build to Our Team</button>
+          </form>
+          <div class="form-success-inline" id="buildFormSuccess">
+            <div class="success-icon">&#10003;</div>
+            <h4>Build Request Sent!</h4>
+            <p>We'll review your parts list and get back to you with pricing and availability.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Process -->
   <section class="section section-gray">
     <div class="container">

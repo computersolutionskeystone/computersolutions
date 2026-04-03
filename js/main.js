@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function () {
     { title: 'Virus & Malware Removal', desc: 'Thorough virus and malware removal with a 90-day warranty. We clean your system, set up protection, and if it comes back within 90 days we fix it free.' },
     { title: 'Data Recovery', desc: 'Lost important files? We recover data from damaged, corrupted, or failing hard drives and SSDs. Don\'t panic — bring it in and we\'ll see what we can save.' },
     { title: 'Computer Sales', desc: 'New and refurbished laptops and desktops at competitive prices. We help you find the right computer for your needs and budget, with setup included.' },
-    { title: 'Custom Computer Builds', desc: 'We build custom PCs tailored to your needs and budget — gaming, workstation, or everyday use. Hand-picked components, assembled and tested by our team.' },
+    { title: 'Custom Computer Builds', desc: 'We build custom PCs tailored to your needs and budget. Pick your parts on PCPartPicker, send us the list, and we handle the rest. <a href="services.html#buildYourPC">Start your build &rarr;</a>' },
     { title: 'Business IT Support', desc: 'Full software and hardware support for business computers. Consulting, setup, network troubleshooting, and ongoing maintenance plans available.' }
   ];
 
@@ -499,6 +499,13 @@ document.addEventListener('DOMContentLoaded', function () {
     if (tsChatForm && tsChatSuccess) {
       submitWeb3Form(tsChatForm, tsChatSuccess);
     }
+  }
+
+  // --- Build Form (Web3Forms) ---
+  var buildForm = document.getElementById('buildForm');
+  var buildFormSuccess = document.getElementById('buildFormSuccess');
+  if (buildForm && buildFormSuccess) {
+    submitWeb3Form(buildForm, buildFormSuccess);
   }
 
   // --- Smooth scroll for anchor links ---

@@ -1777,6 +1777,55 @@ p {
 }
 
 /* ============================================
+   BUILD YOUR PC WORKFLOW
+   ============================================ */
+.build-workflow {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.build-step-1 {
+  padding: 2rem;
+  background: var(--dark);
+  border-radius: var(--radius-xl);
+  color: var(--white);
+  text-align: center;
+}
+
+.build-step-1 h3 {
+  color: var(--white);
+  margin-bottom: 0.75rem;
+  font-size: 1.15rem;
+}
+
+.build-step-1 p {
+  color: var(--gray-400);
+  font-size: 0.9rem;
+  margin-bottom: 1.25rem;
+  line-height: 1.6;
+}
+
+.build-step-2 h3 {
+  font-size: 1.15rem;
+  margin-bottom: 1rem;
+}
+
+.build-step-2 .form-group { margin-bottom: 0.9rem; }
+.build-step-2 .form-group label { font-size: 0.85rem; }
+.build-step-2 .form-group input,
+.build-step-2 .form-group textarea {
+  padding: 0.65rem 0.9rem;
+  font-size: 0.9rem;
+}
+.build-step-2 textarea { min-height: 70px; }
+
+@media (max-width: 768px) {
+  .build-workflow { grid-template-columns: 1fr; }
+}
+
+/* ============================================
    ROBO CHAIYZ PROMPT + TROUBLESHOOTER
    ============================================ */
 .svc-heading-row {
