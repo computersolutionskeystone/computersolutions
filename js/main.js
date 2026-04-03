@@ -501,6 +501,17 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
+  // --- Show Build Section ---
+  var showBuildBtn = document.getElementById('showBuildSection');
+  var buildSection = document.getElementById('buildYourPC');
+  if (showBuildBtn && buildSection) {
+    showBuildBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      buildSection.style.display = 'block';
+      buildSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+
   // --- Build Advisor ---
   var baOpenBtn = document.getElementById('baOpenBtn');
   var baModal = document.getElementById('baModal');
