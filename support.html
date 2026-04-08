@@ -142,10 +142,7 @@
       <div class="support-card">
         <h2>Customer Support</h2>
         <p>Already a customer? Send us an update or photos of your issue.</p>
-        <form id="supportForm" action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data">
-          <input type="hidden" name="access_key" value="" class="web3forms-key">
-          <input type="hidden" name="subject" value="Customer Support Request - Computer Solutions">
-          <input type="hidden" name="from_name" value="Computer Solutions Support Form">
+        <form id="supportForm" enctype="multipart/form-data">
           <div class="form-group">
             <label for="spName">Name *</label>
             <input type="text" id="spName" name="name" required placeholder="Your name">
@@ -175,7 +172,7 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
               <p>Tap to upload or drag photos here</p>
               <small>JPG, PNG up to 5MB each. Up to 3 photos.</small>
-              <input type="file" name="attachment" id="fileInput" accept="image/*" multiple>
+              <input type="file" name="photos" id="fileInput" accept="image/*" multiple>
             </div>
             <div class="file-preview" id="filePreview"></div>
           </div>
@@ -303,7 +300,7 @@
           btn.disabled = true;
 
           var formData = new FormData(supportForm);
-          fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData })
+          fetch('/api/support', { method: 'POST', body: formData })
             .then(function(r) { return r.json(); })
             .then(function(data) {
               if (data.success) {
