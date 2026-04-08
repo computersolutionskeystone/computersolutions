@@ -8,7 +8,7 @@
 var SITE_CONFIG = {
   // Web3Forms access key for contact/callback forms
   // Get yours free at https://web3forms.com
-  WEB3FORMS_KEY: '964d570b-81c8-4246-b2a2-2dc9e527b4de',
+  WEB3FORMS_KEY: '6b158c32-9b9d-45df-a9d8-c9dd127a5adf',
 
   // Google Reviews: Set to true after adding GOOGLE_PLACES_API_KEY
   // and GOOGLE_PLACE_ID as environment variables in Cloudflare Pages
